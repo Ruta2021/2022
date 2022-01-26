@@ -1,0 +1,57 @@
+//brute force method (gives runtime error when submitted)
+class Solution {
+public:
+    bool uniqueOccurrences(vector<int>& arr) {
+        unordered_map<int,int>m;
+        int n=arr.size();
+        vector<int>v;
+        for(int i=0;i<n;i++)
+        {
+            m[arr[i]]++;
+        }
+        
+        for(auto it:m)
+        {
+           v.push_back(it.second); 
+        }
+        sort(v.begin(),v.end());
+       
+        for(int i=0;i<v.size();i++)
+        {
+            if(v[i]==v[i+1])
+            {
+                return 0;
+                
+            }
+           
+        }
+        return 1;
+    }
+};
+
+//optimized Solution
+class Solution {
+public:
+    bool uniqueOccurrences(vector<int>& arr) {
+        unordered_map<int,int>m;
+        for(int i=0;i<arr.size(); i++)
+        {
+            m[arr[i]]++;
+        }
+        set<int>s;
+        
+        for(auto it:m)
+        {
+            s.insert(it.second);
+        }
+       if(m.size()==s.size())
+       {
+           return true;
+       }
+        else
+        {
+             return false;
+        }
+       
+    }
+};

@@ -1,0 +1,28 @@
+//function yo find pair sum
+
+vector<vector<int>> pairSum(vector<int> &arr, int s){
+    int N=arr.size();
+   sort(arr.begin(),arr.end());  
+    int i=0;
+    int sum=0;
+    vector<vector<int>>ans;
+    while(i<N)
+    {
+        for(int j=i+1;j<N;j++)
+        {
+            if(arr[i]+arr[j]==s)
+            {
+                vector<int>t;
+                t.push_back(min(arr[i],arr[j]));
+                t.push_back(max(arr[i],arr[j]));
+                ans.push_back(t);
+               
+            }
+            
+           }
+         i++;
+    }
+              
+    return ans;
+    
+}
