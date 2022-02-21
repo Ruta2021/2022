@@ -1,12 +1,23 @@
 #include<bits/stdc++.h>
 #include<iostream>
 using namespace std;
+char tolowercase(char ch)
+{
+    if(ch>='a' && ch<='z')
+    {
+        return ch;
+    }
+    else{
+        char temp=ch-'A'+'a';
+        return temp;
+    }
+}
 bool checkpalindrome(char ch[],int n)
 {
     int k=n-1;
     int i=0;
     while(i<=k){
-        if(ch[i]!=ch[k])
+        if(tolowercase(ch[i])!=tolowercase(ch[k]))
         {
             return false;
         }
@@ -40,6 +51,7 @@ int main()
     
     cout<<name;
     cout<<"is or not"<<" "<<checkpalindrome(name,n);
-  
+    cout<<"Charater to lower case is "<<tolowercase('b')<<endl;
+     cout<<"Charater to lower case is "<<tolowercase('A')<<endl;
     return 0;
 }
