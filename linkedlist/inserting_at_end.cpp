@@ -1,20 +1,14 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-struct Node
-{
+//structure to create data type node
+struct Node {
     int data;
     struct Node *next;
 }
 *first=NULL;
-void display(struct Node *p)
-{
-    while(p!=0)
-    {
-        printf("%d" " ",p->data);
-        p=p->next;
-    }
-}
+struct Node *last=NULL;
+//creation of LL
 void create(int A[], int n)
 {
     int i;
@@ -33,44 +27,43 @@ void create(int A[], int n)
     }
 }
 
-void sortedinsert(struct Node *p,int x)
+//display of LL
+int cnt=0;
+void display(struct Node *p)
 {
-    struct Node *t,*q=NULL;
-    t=(struct Node*)malloc(sizeof(struct Node));
+    while(p!=0)
+    {
+        printf("%d" " ",p->data);
+        cnt++;
+        p=p->next;
+       
+    }
+}
+
+//inserting at the last
+void insertlast(int x)
+{
+    struct Node *t=new Node;
+    
     t->data=x;
     t->next=NULL;
-    p=first;
     if(first==NULL)
     {
-        first =t;
-
+        first=last=t;
     }
-    else
-    {
-      while(p!=0 && p->data<x)
-      {
-          q=p;
-          p=p->next;
-
-      }
-      if(p==first)
-      {
-          t->next=first;
-          first=t;
-      }
-      else{
-          t->next=q->next;
-          q->next=t;
-      }
+    else{
+        last->next=t;
+        last=t;
     }
-    
 }
 int main()
 {
     struct Node *temp;
     int A[] = {3, 5, 7, 10, 100, 8, 32, 2};
     create(A, 8);
-    sortedinsert(first,10);
+   // display(first);
+   // insert(7,67);
     display(first);
+    insertlast(3);
     return 0;
 }
