@@ -44,33 +44,60 @@ int count(struct Node *p)
     return c;
 }
 
-struct Node *reverse(struct Node *l)
+void reverse(struct Node *p)
 {
-    int k=count(first);
-    int A[k];
+    int *A;
+    struct Node *q=p;
     int i=0;
-    struct Node*p=l;
-    while(p!=NULL)
+    A=(int *)malloc(sizeof(int)*count(p));
+    
+   
+    while(q!=NULL)
     {
         A[i]==p->data;
-        p=p->next;
+        q=q->next;
         i++;
     }
-    p=l;i--;
-    while(p!=NULL)
+    q=p;i--;
+    while(q!=NULL)
     {
-        p->data=A[i];
-        p=p->next;
+        q->data=A[i];
+        q=q->next;
         i--;
     }
-    return l;
+    
+}
+void reverse2(struct Node *p)
+{
+    struct Node *q=NULL,*r=NULL;
+    while(p!=NULL)
+    {
+        r=q;
+        q=p;
+        p=p->next;
+        q->next=r;
+    }
+    first=q;
+}
+void reverse3(struct Node *q,struct Node *p)
+{
+if(p)
+{
+    reverse3(p,p->next);
+    p->next=q;
+}
+else{
+    first=q;
+}
 }
 int main()
 {
     int A[]={1,2,3,4,5};
     create(A,5);
-    display(first);
-    reverse(first);
+   //display(first);
+    //reverse(first);
+    //display(first);
+    reverse3(NULL,first);
     display(first);
     return 0;
 }
