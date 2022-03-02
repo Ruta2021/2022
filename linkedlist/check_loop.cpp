@@ -45,6 +45,8 @@ bool isloop(struct Node *f)
   }
   else
   {
+
+
   return 0;
   }
 
